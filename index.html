@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasia Iwaszko - Stylizacja brwi i rzęs · Suwałki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ROOT */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FAFAFA;
+  --white: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5a5a5a;
+  --accent: #C4748E;
+  --accent-dark: #a85c75;
+  --card-bg: rgba(196,116,142,0.06);
+  --border: rgba(196,116,142,0.18);
+  --nav-h: 72px;
+  --ff-h: 'Cormorant Garamond', serif;
+  --ff-b: 'Raleway', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--ff-b);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  font-family: var(--ff-b);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, border-color 0.22s;
+  border: 1.5px solid transparent;
+}
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn-outline { background: transparent; color: var(--text); border-color: var(--text); }
+.btn-outline:hover { background: var(--text); color: #fff; }
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  height: var(--nav-h);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.nav-logo {
+  font-family: var(--ff-h);
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  white-space: nowrap;
+  margin-right: auto;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.btn-nav {
+  font-family: var(--ff-b);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: background 0.22s;
+}
+.btn-nav:hover { background: var(--accent-dark); }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mmenu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background: var(--white);
+  padding: 32px 24px 40px;
+  border-top: 1px solid var(--border);
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 99;
+}
+.mmenu.open { display: flex; }
+.mmenu-cta {
+  font-family: var(--ff-b);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 22px 0;
+  width: 85%;
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.mmenu-cta-ol {
+  font-family: var(--ff-b);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 22px 0;
+  width: 85%;
+  text-align: center;
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--text);
+  border-radius: 2px;
+  margin-bottom: 28px;
+  letter-spacing: 0.04em;
+}
+.mmenu a:not(.mmenu-cta):not(.mmenu-cta-ol):not(.mmenu-soc) {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 18px 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.mmenu-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+.mmenu-soc {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.mmenu-soc:hover { color: var(--accent); border-color: var(--accent); }
+
+/* HERO */
+.hero {
+  display: flex;
+  height: calc(100svh - var(--nav-h));
+  overflow: hidden;
+}
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 80px;
+}
+.hero-label {
+  display: block;
+  font-family: var(--ff-b);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out 0.1s forwards;
+}
+.hero-h1 {
+  font-family: var(--ff-h);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--text);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out 0.25s forwards;
+}
+.hero-sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 420px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out 0.4s forwards;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease-out 0.55s forwards;
+}
+.hero-img { flex: 1; height: 100%; }
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* SECTIONS */
+.section-label {
+  display: block;
+  font-family: var(--ff-b);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.section-h2 {
+  font-family: var(--ff-h);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 580px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* FADE */
+.fade {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+.fade.on { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.18s; }
+.d3 { transition-delay: 0.28s; }
+.d4 { transition-delay: 0.38s; }
+.d5 { transition-delay: 0.48s; }
+
+/* O MNIE */
+.about { padding: 96px 0; background: var(--white); }
+.about-inner { display: flex; gap: 80px; align-items: center; }
+.about-text { flex: 1; }
+.about-text p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.about-text p:last-of-type { margin-bottom: 36px; }
+.about-stats { display: flex; gap: 48px; }
+.stat-num {
+  font-family: var(--ff-h);
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.about-img {
+  flex: 0 0 420px;
+  height: 540px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ZABIEGI */
+.zabiegi { padding: 96px 0 60px; background: var(--bg); }
+.zabiegi-header { text-align: center; margin-bottom: 56px; }
+.zabiegi-header .section-sub { margin: 0 auto; }
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.svc-card {
+  grid-column: span 2;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+.svc-card.svc-on { opacity: 1; transform: none; }
+.svc-card:nth-child(4) { grid-column: 2 / 4; }
+.svc-card:nth-child(5) { grid-column: 4 / 6; }
+.svc-img { width: 100%; height: 210px; overflow: hidden; }
+.svc-img img { width: 100%; height: 100%; object-fit: cover; }
+.svc-body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.svc-num {
+  font-family: var(--ff-h);
+  font-size: 18px;
+  color: var(--accent);
+  opacity: 0.55;
+  margin-bottom: 8px;
+}
+.svc-title {
+  font-family: var(--ff-h);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.svc-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  flex: 1;
+}
+.svc-price {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 16px;
+}
+.svc-val {
+  font-family: var(--ff-h);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--accent);
+}
+.svc-time { font-size: 12px; color: var(--muted); }
+.zabiegi-cta { text-align: center; padding: 48px 0 0; }
+
+/* CENNIK */
+.cennik { padding: 60px 0 96px; background: var(--bg); }
+.cennik-header { text-align: center; margin-bottom: 40px; }
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin-bottom: 36px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  font-family: var(--ff-b);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.price-list { max-width: 680px; margin: 0 auto; }
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.price-item.on { opacity: 1; transform: none; }
+.price-item:last-child { border-bottom: none; }
+.pi-name { font-size: 15px; color: var(--text); flex: 1; }
+.pi-time { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.pi-val {
+  font-family: var(--ff-h);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent);
+  white-space: nowrap;
+  min-width: 64px;
+  text-align: right;
+}
+
+/* SZKOLENIA */
+.szkolenia { padding: 96px 0; background: rgba(196,116,142,0.04); }
+.szkolenia-inner { display: flex; gap: 80px; align-items: flex-start; }
+.szkolenia-content { flex: 1; }
+.szkolenia-content .section-sub { margin-bottom: 48px; }
+.kurs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+.kurs-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 28px 24px;
+}
+.kurs-num {
+  font-family: var(--ff-h);
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--accent);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.kurs-title {
+  font-family: var(--ff-h);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.kurs-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.perks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin-bottom: 36px;
+}
+.perk { text-align: center; }
+.perk-icon { font-size: 22px; margin-bottom: 8px; }
+.perk-label { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.szkolenia-img {
+  flex: 0 0 400px;
+  border-radius: 2px;
+  overflow: hidden;
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);
+}
+.szkolenia-img img { width: 100%; display: block; }
+.szkolenia-img-mobile { display: none; border-radius: 2px; overflow: hidden; }
+.szkolenia-img-mobile img { width: 100%; display: block; }
+
+/* OPINIE */
+.opinie { padding: 96px 0; background: var(--white); }
+.opinie-header { text-align: center; margin-bottom: 56px; }
+.opinie-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.opinia {
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+.opinia-stars { color: var(--accent); font-size: 16px; margin-bottom: 20px; letter-spacing: 2px; }
+.opinia-text {
+  font-family: var(--ff-h);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 24px;
+}
+.opinia-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.opinia-detail { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+/* KONTAKT */
+.kontakt { padding: 96px 0; background: var(--bg); }
+#kontakt-szkolenia { scroll-margin-top: calc(var(--nav-h) + 24px); }
+.kontakt-header { text-align: center; margin-bottom: 56px; }
+.kontakt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.kontakt-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 48px 40px;
+}
+.kontakt-title {
+  font-family: var(--ff-h);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.kontakt-sub { font-size: 13px; color: var(--muted); margin-bottom: 32px; line-height: 1.6; }
+.kontakt-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text);
+  font-family: var(--ff-b);
+}
+.kontakt-row:last-of-type { border-bottom: none; margin-bottom: 24px; }
+.kontakt-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--accent); }
+.k-btn {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--ff-b);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.22s;
+  margin-top: 24px;
+}
+.k-btn:hover { background: var(--accent-dark); }
+.k-btn-ol {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--ff-b);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--text);
+  border-radius: 2px;
+  transition: background 0.22s, color 0.22s;
+  margin-top: 12px;
+}
+.k-btn-ol:hover { background: var(--text); color: #fff; }
+
+/* FOOTER */
+.footer { background: #1a1a1a; padding: 40px 0; }
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  font-family: var(--ff-h);
+  font-size: 20px;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.5); }
+.footer-socials { display: flex; gap: 12px; }
+.footer-soc {
+  font-family: var(--ff-b);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  padding: 8px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.footer-soc:hover { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.5); }
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .szkolenia-inner { flex-direction: column; }
+  .szkolenia-img { display: none; }
+  .szkolenia-img-mobile { display: block; margin-bottom: 32px; }
+  .about-img { flex: 0 0 340px; height: 440px; }
+  .about-inner { gap: 48px; }
+}
+@media (max-width: 900px) {
+  .about-inner { flex-direction: column; }
+  .about-img { flex: none; width: 100%; height: 320px; }
+  .svc-card:nth-child(4) { grid-column: span 2; }
+  .svc-card:nth-child(5) { grid-column: span 2; }
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-card { grid-column: span 1; }
+  .kontakt-grid { grid-template-columns: 1fr; }
+}
+
+.br-mobile { display: none; }
+#o-mnie, #zabiegi, #cennik, #szkolenia, #opinie, #kontakt, #umow-zabieg { scroll-margin-top: 80px; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .br-mobile { display: inline; }
+  .container { padding: 0 20px; }
+
+  /* Nav */
+  .nav-inner { padding: 0 20px; }
+  .nav-links { display: none; }
+  .btn-nav { display: none; }
+  .hamburger { display: flex; }
+
+  /* Hero mobile - fullscreen z gradientem */
+  .hero { position: relative; height: calc(100svh - var(--nav-h)); }
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .hero-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.52) 48%, rgba(0,0,0,0) 100%);
+  }
+  .hero-text {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    justify-content: flex-end;
+    padding: 0 24px 48px;
+  }
+  .hero-label { color: rgba(255,255,255,0.85); margin-bottom: 6px; }
+  .hero-h1 {
+    font-size: 36px;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+  }
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 1px 10px rgba(0,0,0,0.7);
+    margin-bottom: 24px;
+  }
+  .hero-btns { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-btns .btn { text-align: center; }
+  .hero-btns .btn-outline { color: #fff; border-color: rgba(255,255,255,0.7); }
+  .hero-btns .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+  /* About */
+  .about { padding: 64px 0; }
+  .about-stats { gap: 28px; flex-wrap: nowrap; }
+
+  /* Zabiegi */
+  .zabiegi { padding: 64px 0 40px; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .svc-card { grid-column: span 1 !important; }
+
+  /* Cennik */
+  .cennik { padding: 40px 0 64px; }
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: none;
+    gap: 8px;
+    overflow-x: visible;
+    margin-bottom: 28px;
+  }
+  .tab-btn {
+    border: 1px solid var(--border);
+    background: var(--white);
+    text-align: center;
+    white-space: normal;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+    border-radius: 2px;
+    padding: 12px 8px;
+  }
+  .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* Szkolenia */
+  .szkolenia { padding: 64px 0; }
+  .kurs-grid { grid-template-columns: 1fr; }
+  .perks { grid-template-columns: 1fr 1fr; }
+
+  /* Opinie */
+  .opinie { padding: 64px 0; }
+  .opinie-grid { grid-template-columns: 1fr; }
+  .opinia { padding: 28px; }
+
+  /* Kontakt */
+  .kontakt { padding: 64px 0; }
+  .kontakt-block { padding: 32px 24px; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-socials { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Kasia Iwaszko</a>
+    <div class="nav-links">
+      <a href="#zabiegi">Zabiegi</a>
+      <a href="#szkolenia">Szkolenia</a>
+      <a href="#o-mnie">O mnie</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="https://booksy.com/pl-pl/262179_stylistbeauty-iwaszko_brwi-i-rzesy_6623_suwalki?do=invite" target="_blank" class="btn-nav">Booksy</a>
+    <button class="hamburger" id="hamburger" aria-label="Otwórz menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mmenu" id="mmenu">
+    <a href="#umow-zabieg" class="mmenu-cta">Umów wizytę</a>
+    <a href="#kontakt-szkolenia" class="mmenu-cta-ol">Zapisz na szkolenie</a>
+    <a href="#zabiegi">Zabiegi</a>
+    <a href="#szkolenia">Szkolenia</a>
+    <a href="#o-mnie">O mnie</a>
+    <a href="#kontakt">Kontakt</a>
+    <div class="mmenu-socials">
+      <a href="https://www.instagram.com/kasiaiwaszko.instruktor" target="_blank" class="mmenu-soc" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61559319047397" target="_blank" class="mmenu-soc" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-label">Instruktorka · Suwałki</span>
+    <h1 class="hero-h1">Brwi i rzęsy, które mówią za siebie</h1>
+    <p class="hero-sub">4 lata doświadczenia<br>1900+ zadowolonych klientek</p>
+    <div class="hero-btns">
+      <a href="#umow-zabieg" class="btn btn-primary">Umów zabieg</a>
+      <a href="#kontakt-szkolenia" class="btn btn-outline">Zapisz na szkolenie</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="profilowe.jpg" alt="Kasia Iwaszko - instruktorka stylizacji brwi i rzęs">
+  </div>
+</section>
+
+<!-- O MNIE -->
+<section class="about" id="o-mnie">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="section-label fade">O Kasi</span>
+        <h2 class="section-h2 fade d1">Pasja, która stała się sposobem na życie</h2>
+        <p class="fade d2">Mam na imię Kasia, mam 22 lata i jestem instruktorką stylizacji brwi i liftingu rzęs. Swoją drogę zaczęłam 4 lata temu od makijaży okolicznościowych jako samouk. Kiedy odkryłam świat brwi, przepadłam bez reszty.</p>
+        <p class="fade d3">Jako jedyna w Suwałkach uczę dwóch metod regulacji: woskiem i nitką, która jest najskuteczniejszą metodą depilacji. Skompresuję swoją wiedzę, za którą zapłaciłam ogromne pieniądze, w szkolenie, które da Ci realne narzędzia do pracy.</p>
+        <div class="about-stats">
+          <div class="fade d3">
+            <div class="stat-num">1900+</div>
+            <div class="stat-label">zadowolonych klientek</div>
+          </div>
+          <div class="fade d4">
+            <div class="stat-num">Jedyna</div>
+            <div class="stat-label">instruktorka nitkowania w Suwałkach</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-img fade d2">
+        <img src="sekcja2.jpg" alt="Kasia Iwaszko">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZABIEGI -->
+<section class="zabiegi" id="zabiegi">
+  <div class="container">
+    <div class="zabiegi-header">
+      <span class="section-label fade">Gabinet</span>
+      <h2 class="section-h2 fade d1">Zabiegi na brwi i rzęsy</h2>
+      <p class="section-sub fade d2">Zabiegi wykonywane profesjonalnie,<span class="br-mobile"><br></span> w komfortowej atmosferze.<br>Każda klientka traktowana jest indywidualnie.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-img"><img src="closeup.jpeg" alt="Laminacja brwi"></div>
+        <div class="svc-body">
+          <span class="svc-num">01</span>
+          <h3 class="svc-title">Laminacja brwi z koloryzacją</h3>
+          <p class="svc-desc">Idealnie ułożone, gęste brwi na wiele tygodni. Z doborem koloru farbki.</p>
+          <div class="svc-price">
+            <span class="svc-val">130 zł</span>
+            <span class="svc-time">· ok. 1h</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img"><img src="lifting.jpg" alt="Lifting rzęs"></div>
+        <div class="svc-body">
+          <span class="svc-num">02</span>
+          <h3 class="svc-title">Lifting rzęs z koloryzacją</h3>
+          <p class="svc-desc">Trwałe podkręcenie i wydłużenie własnych rzęs. Naturalny efekt na co dzień.</p>
+          <div class="svc-price">
+            <span class="svc-val">150 zł</span>
+            <span class="svc-time">· ok. 1h</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img"><img src="twarz.jpeg" alt="Pakiet lifting i laminacja"></div>
+        <div class="svc-body">
+          <span class="svc-num">03</span>
+          <h3 class="svc-title">Pakiet lifting rzęs + laminacja brwi</h3>
+          <p class="svc-desc">Kompleksowa stylizacja oczu i brwi w jednej wizycie. Najpopularniejszy zestaw.</p>
+          <div class="svc-price">
+            <span class="svc-val">250 zł</span>
+            <span class="svc-time">· ok. 1h 30 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img"><img src="closeup.jpeg" alt="Farbka brwi"></div>
+        <div class="svc-body">
+          <span class="svc-num">04</span>
+          <h3 class="svc-title">Farbka brwi</h3>
+          <p class="svc-desc">Precyzyjne zabarwienie z doborem koloru do karnacji i preferencji.</p>
+          <div class="svc-price">
+            <span class="svc-val">od 60 zł</span>
+            <span class="svc-time">· 30-40 min</span>
+          </div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-img"><img src="twarz2.jpeg" alt="Nitkowanie twarzy"></div>
+        <div class="svc-body">
+          <span class="svc-num">05</span>
+          <h3 class="svc-title">Nitkowanie twarzy</h3>
+          <p class="svc-desc">Najdokładniejsza metoda depilacji. Usuwa nawet najdrobniejsze włoski, bez podrażnień.</p>
+          <div class="svc-price">
+            <span class="svc-val">60 zł</span>
+            <span class="svc-time">· ok. 45 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="zabiegi-cta fade">
+      <a href="https://booksy.com/pl-pl/262179_stylistbeauty-iwaszko_brwi-i-rzesy_6623_suwalki?do=invite" target="_blank" class="btn btn-primary">Zarezerwuj przez Booksy</a>
+    </div>
+  </div>
+</section>
+
+<!-- CENNIK -->
+<section class="cennik" id="cennik">
+  <div class="container">
+    <div class="cennik-header">
+      <span class="section-label fade">Cennik</span>
+      <h2 class="section-h2 fade d1">Pełny cennik</h2>
+    </div>
+    <div class="tabs fade d2" id="tabs">
+      <button class="tab-btn active" data-tab="brwi">Brwi</button>
+      <button class="tab-btn" data-tab="rzesy">Rzęsy</button>
+      <button class="tab-btn" data-tab="twarz">Twarz</button>
+      <button class="tab-btn" data-tab="pakiety">Pakiety</button>
+    </div>
+
+    <div class="tab-panel active" id="panel-brwi">
+      <div class="price-list">
+        <div class="price-item"><span class="pi-name">Laminacja brwi + koloryzacja</span><span class="pi-time">1h</span><span class="pi-val">130 zł</span></div>
+        <div class="price-item"><span class="pi-name">Laminacja brwi (bez koloryzacji)</span><span class="pi-time">1h</span><span class="pi-val">110 zł</span></div>
+        <div class="price-item"><span class="pi-name">Farbka brwi (z odbiciem na skórze)</span><span class="pi-time">40 min</span><span class="pi-val">70 zł</span></div>
+        <div class="price-item"><span class="pi-name">Farbka brwi (kolor na sam włosek)</span><span class="pi-time">30 min</span><span class="pi-val">60 zł</span></div>
+        <div class="price-item"><span class="pi-name">Regulacja brwi</span><span class="pi-time">15 min</span><span class="pi-val">50 zł</span></div>
+        <div class="price-item"><span class="pi-name">Korekta brwi</span><span class="pi-time">1h</span><span class="pi-val">300 zł+</span></div>
+        <div class="price-item"><span class="pi-name">Makijaż permanentny brwi</span><span class="pi-time">2h</span><span class="pi-val">700 zł</span></div>
+        <div class="price-item"><span class="pi-name">Odżywienie brwi</span><span class="pi-time">5 min</span><span class="pi-val">30 zł</span></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-rzesy">
+      <div class="price-list">
+        <div class="price-item"><span class="pi-name">Lifting rzęs + koloryzacja</span><span class="pi-time">1h</span><span class="pi-val">150 zł</span></div>
+        <div class="price-item"><span class="pi-name">Henna rzęs</span><span class="pi-time">15 min</span><span class="pi-val">30 zł</span></div>
+        <div class="price-item"><span class="pi-name">Odżywienie rzęs</span><span class="pi-time">5 min</span><span class="pi-val">30 zł</span></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-twarz">
+      <div class="price-list">
+        <div class="price-item"><span class="pi-name">Makijaż ślubny</span><span class="pi-time">1h 30 min</span><span class="pi-val">210 zł</span></div>
+        <div class="price-item"><span class="pi-name">Makijaż okolicznościowy</span><span class="pi-time">1h</span><span class="pi-val">180 zł</span></div>
+        <div class="price-item"><span class="pi-name">Nitkowanie twarzy</span><span class="pi-time">45 min</span><span class="pi-val">60 zł</span></div>
+        <div class="price-item"><span class="pi-name">Nitkowanie brody</span><span class="pi-time">15 min</span><span class="pi-val">20 zł</span></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="panel-pakiety">
+      <div class="price-list">
+        <div class="price-item"><span class="pi-name">Lifting rzęs + laminacja brwi</span><span class="pi-time">1h 30 min</span><span class="pi-val">250 zł</span></div>
+        <div class="price-item"><span class="pi-name">Lifting rzęs + stylizacja brwi</span><span class="pi-time">1h 20 min</span><span class="pi-val">200 zł</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SZKOLENIA -->
+<section class="szkolenia" id="szkolenia">
+  <div class="container">
+    <div class="szkolenia-inner">
+      <div class="szkolenia-content">
+        <span class="section-label fade">Akademia</span>
+        <h2 class="section-h2 fade d1">Naucz się od najlepszej</h2>
+        <p class="section-sub fade d2">Jako jedyna instruktorka w okolicy uczę dwóch metod regulacji brwi: woskiem i nitką. Dużo praktyki, realna wiedza i wsparcie po szkoleniu.</p>
+        <div class="kurs-grid">
+          <div class="kurs-card fade d2">
+            <div class="kurs-num">01</div>
+            <h3 class="kurs-title">Nitkowanie i farbka brwi</h3>
+            <p class="kurs-desc">Dwie metody depilacji w jednym szkoleniu. Wiedza, którą mają nieliczne stylistki.</p>
+          </div>
+          <div class="kurs-card fade d3">
+            <div class="kurs-num">02</div>
+            <h3 class="kurs-title">Laminacja brwi</h3>
+            <p class="kurs-desc">Techniki laminacji krok po kroku, od teorii do praktyki na modelce.</p>
+          </div>
+          <div class="kurs-card fade d3">
+            <div class="kurs-num">03</div>
+            <h3 class="kurs-title">Lifting rzęs</h3>
+            <p class="kurs-desc">Profesjonalny efekt liftingu od podstaw. Dużo ćwiczeń i wsparcie po kursie.</p>
+          </div>
+          <div class="kurs-card fade d4">
+            <div class="kurs-num">04</div>
+            <h3 class="kurs-title">Doszkolenie dla doświadczonych</h3>
+            <p class="kurs-desc">Udoskonal technikę i poznaj nowości dla osób już pracujących w branży.</p>
+          </div>
+        </div>
+        <div class="szkolenia-img-mobile fade d3">
+          <img src="certyfikaty.jpg" alt="Kursantki Kasi Iwaszko z certyfikatami">
+        </div>
+        <div class="perks fade d4">
+          <div class="perk">
+            <div class="perk-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg></div>
+            <div class="perk-label">Skrypt szkoleniowy</div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
+            <div class="perk-label">Certyfikat ukończenia</div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+            <div class="perk-label">Ciepły posiłek</div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div class="perk-label">Wsparcie poszkoleniowe</div>
+          </div>
+        </div>
+        <div class="fade d5" style="text-align: center;">
+          <a href="#kontakt-szkolenia" class="btn btn-primary">Skontaktuj się</a>
+        </div>
+      </div>
+      <div class="szkolenia-img fade d3">
+        <img src="certyfikaty.jpg" alt="Kursantki Kasi Iwaszko z certyfikatami">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+<section class="opinie" id="opinie">
+  <div class="container">
+    <div class="opinie-header">
+      <span class="section-label fade">Opinie</span>
+      <h2 class="section-h2 fade d1">Co mówią klientki</h2>
+    </div>
+    <div class="opinie-grid">
+      <div class="opinia fade d1">
+        <div class="opinia-stars">★★★★★</div>
+        <p class="opinia-text">"Wizyta była bardzo miła i profesjonalna. Dawno nikt tak dobrze się mną nie zaopiekował. Czułam się komfortowo i w pełni zaopiekowana. Zdecydowanie wrócę i polecam z całego serca."</p>
+        <div>
+          <div class="opinia-name">Patrycja</div>
+          <div class="opinia-detail">Zabieg oczyszczający · Booksy</div>
+        </div>
+      </div>
+      <div class="opinia fade d2">
+        <div class="opinia-stars">★★★★★</div>
+        <p class="opinia-text">"Bardzo uprzejma Osoba, zabieg wykonany w sterylnych warunkach, profesjonalnie, w miłej atmosferze. Pani Katarzyna umie wsłuchać się w potrzeby klientki i dobrać odpowiednią stylizację. Polecam!"</p>
+        <div>
+          <div class="opinia-name">Barbara</div>
+          <div class="opinia-detail">Lifting rzęs + laminacja brwi · Booksy</div>
+        </div>
+      </div>
+      <div class="opinia fade d3">
+        <div class="opinia-stars">★★★★★</div>
+        <p class="opinia-text">"Świetne szkolenie z laminacji brwi! Wszystko dokładnie wyjaśnione, dużo praktyki i bardzo miła atmosfera. Kasia ma ogromną wiedzę i chętnie odpowiada na każde pytanie. Zdecydowanie polecam!"</p>
+        <div>
+          <div class="opinia-name">Magda Burniewicz</div>
+          <div class="opinia-detail">Szkolenie z laminacji brwi · Facebook</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="kontakt" id="kontakt">
+  <div class="container">
+    <div class="kontakt-header">
+      <span class="section-label fade">Kontakt</span>
+      <h2 class="section-h2 fade d1">Znajdź mnie</h2>
+    </div>
+    <div class="kontakt-grid">
+      <div class="kontakt-block fade d1" id="umow-zabieg">
+        <h3 class="kontakt-title">Umów zabieg</h3>
+        <p class="kontakt-sub">Rezerwacja online przez Booksy lub kontakt telefoniczny.</p>
+        <div class="kontakt-row">
+          <span class="kontakt-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <a href="tel:574485048">574 485 048</a>
+        </div>
+        <div class="kontakt-row">
+          <span class="kontakt-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <a href="https://share.google/KUVRBlzWOemno4fyr" target="_blank">Kościuszki 32, Beauty Studio, Suwałki</a>
+        </div>
+        <a href="https://booksy.com/pl-pl/262179_stylistbeauty-iwaszko_brwi-i-rzesy_6623_suwalki?do=invite" target="_blank" class="k-btn">Zarezerwuj przez Booksy</a>
+        <a href="tel:574485048" class="k-btn-ol">Zadzwoń: 574 485 048</a>
+      </div>
+      <div class="kontakt-block fade d2" id="kontakt-szkolenia">
+        <h3 class="kontakt-title">Zapisz się na szkolenie</h3>
+        <p class="kontakt-sub">Napisz po ofertę szkoleniową przez Instagram lub zadzwoń.</p>
+        <div class="kontakt-row">
+          <span class="kontakt-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </span>
+          <a href="https://www.instagram.com/kasiaiwaszko.instruktor" target="_blank">@kasiaiwaszko.instruktor</a>
+        </div>
+        <div class="kontakt-row">
+          <span class="kontakt-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.59a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <a href="tel:574485048">574 485 048</a>
+        </div>
+        <a href="https://www.instagram.com/kasiaiwaszko.instruktor" target="_blank" class="k-btn">Napisz na Instagram</a>
+        <a href="tel:574485048" class="k-btn-ol">Zadzwoń: 574 485 048</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Kasia Iwaszko</span>
+      <span class="footer-copy">© 2026 Kasia Iwaszko · Suwałki</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/kasiaiwaszko.instruktor" target="_blank" class="footer-soc">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61559319047397" target="_blank" class="footer-soc">Facebook</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mmenu = document.getElementById('mmenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mmenu.classList.toggle('open');
+});
+mmenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mmenu.classList.remove('open');
+  });
+});
+
+// Cennik tabs
+function animatePriceItems(panel, baseDelay) {
+  panel.querySelectorAll('.price-item').forEach((el, i) => {
+    el.classList.remove('on');
+    el.style.transitionDelay = (baseDelay + i * 0.06) + 's';
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('on')));
+  });
+}
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('panel-' + btn.dataset.tab);
+    panel.classList.add('active');
+    animatePriceItems(panel, 0);
+  });
+});
+
+// IntersectionObserver - fade elements
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('on');
+      fadeObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(el => fadeObs.observe(el));
+
+// IntersectionObserver - service cards (osobny stagger)
+document.querySelectorAll('.svc-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.12) + 's';
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('svc-on');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  obs.observe(el);
+});
+
+// Cennik - animacja przy wejściu w viewport
+const cennikObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const active = document.querySelector('.tab-panel.active');
+      animatePriceItems(active, 0.5);
+      cennikObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+cennikObs.observe(document.querySelector('.cennik'));
+</script>
+</body>
+</html>
