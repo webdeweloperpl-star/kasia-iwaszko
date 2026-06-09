@@ -238,6 +238,7 @@ img { display: block; max-width: 100%; }
   line-height: 1.12;
   color: var(--text);
   margin-bottom: 20px;
+  text-wrap: balance;
   opacity: 0;
   animation: fadeUp 0.7s ease-out 0.25s forwards;
 }
@@ -287,12 +288,14 @@ img { display: block; max-width: 100%; }
   line-height: 1.15;
   color: var(--text);
   margin-bottom: 16px;
+  text-wrap: balance;
 }
 .section-sub {
   font-size: 15px;
   color: var(--muted);
   line-height: 1.7;
   max-width: 580px;
+  text-wrap: pretty;
 }
 .container {
   max-width: 1200px;
@@ -322,6 +325,7 @@ img { display: block; max-width: 100%; }
   color: var(--muted);
   line-height: 1.75;
   margin-bottom: 16px;
+  text-wrap: pretty;
 }
 .about-text p:last-of-type { margin-bottom: 36px; }
 .about-stats { display: flex; gap: 48px; }
@@ -376,7 +380,7 @@ img { display: block; max-width: 100%; }
 .svc-card.svc-on { opacity: 1; transform: none; }
 .svc-card:nth-child(4) { grid-column: 2 / 4; }
 .svc-card:nth-child(5) { grid-column: 4 / 6; }
-.svc-img { width: 100%; height: 210px; overflow: hidden; }
+.svc-img { width: 100%; height: 260px; overflow: hidden; }
 .svc-img img { width: 100%; height: 100%; object-fit: cover; }
 .svc-body {
   padding: 28px;
@@ -421,6 +425,17 @@ img { display: block; max-width: 100%; }
   color: var(--accent);
 }
 .svc-time { font-size: 12px; color: var(--muted); }
+.svc-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-left: auto;
+  transition: gap 0.2s;
+}
+.svc-more:hover { gap: 8px; }
 .zabiegi-cta { text-align: center; padding: 48px 0 0; }
 
 /* CENNIK */
@@ -545,9 +560,18 @@ img { display: block; max-width: 100%; }
   position: sticky;
   top: calc(var(--nav-h) + 24px);
 }
-.szkolenia-img img { width: 100%; display: block; }
 .szkolenia-img-mobile { display: none; border-radius: 2px; overflow: hidden; }
-.szkolenia-img-mobile img { width: 100%; display: block; }
+.slideshow { position: relative; width: 100%; aspect-ratio: 3/4; }
+.slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+.slideshow img.active { opacity: 1; }
 
 /* OPINIE */
 .opinie { padding: 96px 0; background: var(--white); }
@@ -750,7 +774,7 @@ img { display: block; max-width: 100%; }
 
   /* About */
   .about { padding: 64px 0 40px; }
-  .about-stats { gap: 28px; flex-wrap: nowrap; }
+  .about-stats { gap: 28px; flex-wrap: nowrap; justify-content: center; text-align: center; }
 
   /* Zabiegi */
   .zabiegi { padding: 40px 0 40px; }
@@ -868,8 +892,8 @@ img { display: block; max-width: 100%; }
       <div class="about-text">
         <span class="section-label fade">O Kasi</span>
         <h2 class="section-h2 fade d1">Pasja, która stała się sposobem na życie</h2>
-        <p class="fade d2">Mam na imię Kasia, mam 22 lata i jestem instruktorką stylizacji brwi i liftingu rzęs. Swoją drogę zaczęłam 4 lata temu od makijaży okolicznościowych jako samouk. Kiedy odkryłam świat brwi, przepadłam bez reszty.</p>
-        <p class="fade d3">Jako jedyna w Suwałkach uczę dwóch metod regulacji: woskiem i nitką, która jest najskuteczniejszą metodą depilacji. Skompresuję swoją wiedzę, za którą zapłaciłam ogromne pieniądze, w szkolenie, które da Ci realne narzędzia do pracy.</p>
+        <p class="fade d2">Mam na imię Kasia, mam 23 lata i jestem instruktorką stylizacji brwi i liftingu rzęs.<br>Swoją drogę zaczęłam 4 lata temu od makijaży okolicznościowych jako samouk.<br>Kiedy odkryłam świat brwi, przepadłam bez reszty.</p>
+        <p class="fade d3">Jako jedyna w Suwałkach uczę dwóch metod regulacji: woskiem i nitką, która jest najskuteczniejszą metodą depilacji.<br>Skompresuję swoją wiedzę, za którą zapłaciłam ogromne pieniądze, w szkolenie, które da Ci realne narzędzia do pracy.</p>
         <div class="about-stats">
           <div class="fade d3">
             <div class="stat-num">1900+</div>
@@ -892,44 +916,44 @@ img { display: block; max-width: 100%; }
 <section class="zabiegi" id="zabiegi">
   <div class="container">
     <div class="zabiegi-header">
-      <span class="section-label fade">Gabinet</span>
-      <h2 class="section-h2 fade d1">Zabiegi na brwi i rzęsy</h2>
-      <p class="section-sub fade d2">Zabiegi wykonywane profesjonalnie,<span class="br-mobile"><br></span> w komfortowej atmosferze.<br>Każda klientka traktowana jest indywidualnie.</p>
+      <span class="section-label fade">Oferta</span>
+      <h2 class="section-h2 fade d1">Co mogę dla Ciebie zrobić</h2>
+      <p class="section-sub fade d2">Zabiegi wykonywane profesjonalnie w komfortowej atmosferze. Każda klientka traktowana jest indywidualnie.</p>
     </div>
     <div class="svc-grid">
       <div class="svc-card">
-        <div class="svc-img"><img src="closeup.jpeg" alt="Laminacja brwi"></div>
+        <div class="svc-img"><img src="closeup.jpeg" alt="Zabiegi na brwi"></div>
         <div class="svc-body">
           <span class="svc-num">01</span>
-          <h3 class="svc-title">Laminacja brwi z koloryzacją</h3>
-          <p class="svc-desc">Idealnie ułożone, gęste brwi na wiele tygodni. Z doborem koloru farbki.</p>
+          <h3 class="svc-title">Brwi</h3>
+          <p class="svc-desc">Laminacja, farbka, regulacja woskiem i nitką oraz makijaż permanentny. Pełna oferta brwiowa w jednym miejscu.</p>
           <div class="svc-price">
-            <span class="svc-val">130 zł</span>
-            <span class="svc-time">· ok. 1h</span>
+            <span class="svc-val">od 50 zł</span>
+            <a href="#cennik" class="svc-more" data-tab="brwi">Dowiedz się więcej <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-img"><img src="lifting.jpg" alt="Lifting rzęs"></div>
+        <div class="svc-img"><img src="twarz.jpeg" alt="Zabiegi na rzęsy"></div>
         <div class="svc-body">
           <span class="svc-num">02</span>
-          <h3 class="svc-title">Lifting rzęs z koloryzacją</h3>
-          <p class="svc-desc">Trwałe podkręcenie i wydłużenie własnych rzęs. Naturalny efekt na co dzień.</p>
+          <h3 class="svc-title">Rzęsy</h3>
+          <p class="svc-desc">Lifting z koloryzacją i henna rzęs. Naturalny, trwały efekt bez nakładania tuszów każdego dnia.</p>
           <div class="svc-price">
-            <span class="svc-val">150 zł</span>
-            <span class="svc-time">· ok. 1h</span>
+            <span class="svc-val">od 30 zł</span>
+            <a href="#cennik" class="svc-more" data-tab="rzesy">Dowiedz się więcej <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
       </div>
       <div class="svc-card">
-        <div class="svc-img"><img src="twarz.jpeg" alt="Pakiet lifting i laminacja"></div>
+        <div class="svc-img"><img src="lifting.jpg" alt="Makijaż permanentny"></div>
         <div class="svc-body">
           <span class="svc-num">03</span>
-          <h3 class="svc-title">Pakiet lifting rzęs + laminacja brwi</h3>
-          <p class="svc-desc">Kompleksowa stylizacja oczu i brwi w jednej wizycie. Najpopularniejszy zestaw.</p>
+          <h3 class="svc-title">Makijaż</h3>
+          <p class="svc-desc">Makijaż ślubny i okolicznościowy, który podkreśli Twój wyjątkowy dzień. Dostępny też makijaż permanentny brwi i ust dla trwałego efektu.</p>
           <div class="svc-price">
-            <span class="svc-val">250 zł</span>
-            <span class="svc-time">· ok. 1h 30 min</span>
+            <span class="svc-val">od 180 zł</span>
+            <a href="#cennik" class="svc-more" data-tab="twarz">Dowiedz się więcej <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
       </div>
@@ -975,6 +999,7 @@ img { display: block; max-width: 100%; }
     </div>
     <div class="tab-panel" id="panel-twarz">
       <div class="price-list">
+        <div class="price-item"><span class="pi-name">Makijaż permanentny ust</span><span class="pi-time">2h</span><span class="pi-val">700 zł</span></div>
         <div class="price-item"><span class="pi-name">Makijaż ślubny</span><span class="pi-time">1h 30 min</span><span class="pi-val">210 zł</span></div>
         <div class="price-item"><span class="pi-name">Makijaż okolicznościowy</span><span class="pi-time">1h</span><span class="pi-val">180 zł</span></div>
         <div class="price-item"><span class="pi-name">Nitkowanie twarzy</span><span class="pi-time">45 min</span><span class="pi-val">60 zł</span></div>
@@ -1017,7 +1042,14 @@ img { display: block; max-width: 100%; }
           </div>
         </div>
         <div class="szkolenia-img-mobile fade d3">
-          <img src="certyfikaty.jpg" alt="Kursantki Kasi Iwaszko z certyfikatami">
+          <div class="slideshow" id="slideshow-mobile">
+            <img src="szkolenia/certy.jpg" alt="Szkolenia Kasia Iwaszko" class="active">
+            <img src="szkolenia/Messenger_creation_1589651A-0258-4268-B086-D04195AE4EE3.jpeg" alt="">
+            <img src="szkolenia/Messenger_creation_2C49066A-7D39-4B05-96B8-3BBEF38D1817.jpeg" alt="">
+            <img src="szkolenia/Messenger_creation_5866BF97-107B-4F1E-AAB8-20D74DFC7C03.jpeg" alt="">
+            <img src="szkolenia/Messenger_creation_8D7A5CD1-7A6C-427A-BA6A-737269CCBE97.jpeg" alt="">
+            <img src="szkolenia/Messenger_creation_FAD97A17-4041-42DB-8BE1-BC919728A239.jpeg" alt="">
+          </div>
         </div>
         <div class="perks fade d4">
           <div class="perk">
@@ -1038,11 +1070,18 @@ img { display: block; max-width: 100%; }
           </div>
         </div>
         <div class="fade d5" style="text-align: center;">
-          <a href="#kontakt-szkolenia" class="btn btn-primary">Skontaktuj się</a>
+          <a href="#kontakt-szkolenia" class="btn btn-primary">Zapisz się na szkolenie</a>
         </div>
       </div>
       <div class="szkolenia-img fade d3">
-        <img src="certyfikaty.jpg" alt="Kursantki Kasi Iwaszko z certyfikatami">
+        <div class="slideshow" id="slideshow-desktop">
+          <img src="szkolenia/certy.jpg" alt="Szkolenia Kasia Iwaszko" class="active">
+          <img src="szkolenia/Messenger_creation_1589651A-0258-4268-B086-D04195AE4EE3.jpeg" alt="">
+          <img src="szkolenia/Messenger_creation_2C49066A-7D39-4B05-96B8-3BBEF38D1817.jpeg" alt="">
+          <img src="szkolenia/Messenger_creation_5866BF97-107B-4F1E-AAB8-20D74DFC7C03.jpeg" alt="">
+          <img src="szkolenia/Messenger_creation_8D7A5CD1-7A6C-427A-BA6A-737269CCBE97.jpeg" alt="">
+          <img src="szkolenia/Messenger_creation_FAD97A17-4041-42DB-8BE1-BC919728A239.jpeg" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -1105,14 +1144,14 @@ img { display: block; max-width: 100%; }
           <span class="kontakt-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
-          <a href="https://share.google/KUVRBlzWOemno4fyr" target="_blank">Kościuszki 32, Beauty Studio, Suwałki</a>
+          <a href="https://share.google/YrSftX00vWPlEctc5" target="_blank">Kościuszki 32, Beauty Studio, Suwałki</a>
         </div>
         <a href="https://booksy.com/pl-pl/262179_stylistbeauty-iwaszko_brwi-i-rzesy_6623_suwalki?do=invite" target="_blank" class="k-btn">Zarezerwuj przez Booksy</a>
         <a href="tel:574485048" class="k-btn-ol">Zadzwoń: 574 485 048</a>
       </div>
       <div class="kontakt-block fade d2" id="kontakt-szkolenia">
         <h3 class="kontakt-title">Zapisz się na szkolenie</h3>
-        <p class="kontakt-sub">Napisz po ofertę szkoleniową przez Instagram lub zadzwoń.</p>
+        <p class="kontakt-sub">W sprawie szkolenia napisz na Instagramie lub zadzwoń.</p>
         <div class="kontakt-row">
           <span class="kontakt-icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1161,6 +1200,22 @@ mmenu.querySelectorAll('a').forEach(a => {
   });
 });
 
+// Svc more links
+document.querySelectorAll('.svc-more').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const tabName = link.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    const btn = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+    const panel = document.getElementById('panel-' + tabName);
+    btn.classList.add('active');
+    panel.classList.add('active');
+    animatePriceItems(panel, 0);
+    document.getElementById('cennik').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
 // Cennik tabs
 function animatePriceItems(panel, baseDelay) {
   panel.querySelectorAll('.price-item').forEach((el, i) => {
@@ -1204,6 +1259,20 @@ document.querySelectorAll('.svc-card').forEach((el, i) => {
   }, { threshold: 0.08 });
   obs.observe(el);
 });
+
+// Slideshow
+function startSlideshow(id) {
+  const imgs = document.querySelectorAll('#' + id + ' img');
+  if (!imgs.length) return;
+  let current = 0;
+  setInterval(() => {
+    imgs[current].classList.remove('active');
+    current = (current + 1) % imgs.length;
+    imgs[current].classList.add('active');
+  }, 3000);
+}
+startSlideshow('slideshow-desktop');
+startSlideshow('slideshow-mobile');
 
 // Cennik - animacja przy wejściu w viewport
 const cennikObs = new IntersectionObserver((entries) => {
