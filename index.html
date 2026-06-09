@@ -720,6 +720,30 @@ img { display: block; max-width: 100%; }
   transition: color 0.2s, border-color 0.2s;
 }
 .footer-soc:hover { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.5); }
+.footer-pp { font-size: 12px; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+.footer-pp:hover { color: rgba(255,255,255,0.7); }
+
+/* PP MODAL */
+.pp-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7); z-index: 9999;
+  align-items: center; justify-content: center; padding: 20px;
+}
+.pp-overlay.active { display: flex; }
+.pp-modal {
+  background: #fff; max-width: 600px; width: 100%;
+  max-height: 80vh; overflow-y: auto;
+  padding: 48px 40px; border-radius: 4px; position: relative;
+}
+.pp-close {
+  position: absolute; top: 20px; right: 24px;
+  background: none; border: none; font-size: 18px;
+  cursor: pointer; color: var(--muted);
+}
+.pp-title { font-family: var(--ff-h); font-size: 28px; font-weight: 400; margin-bottom: 24px; color: var(--text); }
+.pp-body h3 { font-family: var(--ff-b); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 20px 0 8px; color: var(--text); }
+.pp-body p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 4px; }
+@media (max-width: 600px) { .pp-modal { padding: 36px 24px; } }
 
 /* TABLET */
 @media (max-width: 1024px) {
@@ -1212,6 +1236,7 @@ img { display: block; max-width: 100%; }
     <div class="footer-inner">
       <span class="footer-logo">Kasia Iwaszko</span>
       <span class="footer-copy">© 2026 Kasia Iwaszko · Suwałki</span>
+      <a href="#" class="footer-pp" id="pp-link">Polityka prywatności</a>
       <div class="footer-socials">
         <a href="https://www.instagram.com/kasiaiwaszko.instruktor" target="_blank" class="footer-soc">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=61559319047397" target="_blank" class="footer-soc">Facebook</a>
@@ -1320,6 +1345,34 @@ const cennikObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 cennikObs.observe(document.querySelector('.cennik'));
+
+// Polityka prywatnosci modal
+document.getElementById('pp-link').addEventListener('click', e => {
+  e.preventDefault();
+  document.getElementById('pp-overlay').classList.add('active');
+});
+document.getElementById('pp-close').addEventListener('click', () => {
+  document.getElementById('pp-overlay').classList.remove('active');
+});
+document.getElementById('pp-overlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) e.currentTarget.classList.remove('active');
+});
 </script>
+
+<div class="pp-overlay" id="pp-overlay">
+  <div class="pp-modal">
+    <button class="pp-close" id="pp-close">&#x2715;</button>
+    <h2 class="pp-title">Polityka prywatności</h2>
+    <div class="pp-body">
+      <p><strong>Administrator danych:</strong> Kasia Iwaszko, ul. Kościuszki 32, Beauty Studio, Suwałki, tel. 574 485 048</p>
+      <h3>Cel przetwarzania danych</h3>
+      <p>Dane kontaktowe podane podczas kontaktu telefonicznego, przez Instagram lub Booksy przetwarzane są wyłącznie w celu realizacji usług lub umówienia wizyty (art. 6 ust. 1 lit. b RODO). Dane nie są przekazywane osobom trzecim ani wykorzystywane w celach marketingowych bez Twojej zgody.</p>
+      <h3>Google Fonts</h3>
+      <p>Strona korzysta z czcionek Google Fonts. Przy ładowaniu strony przeglądarka nawiązuje połączenie z serwerami Google, przekazując adres IP użytkownika. Google LLC jest odrębnym administratorem tych danych.</p>
+      <h3>Prawa użytkownika</h3>
+      <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia lub ograniczenia przetwarzania. W sprawie danych osobowych skontaktuj się pod numer 574 485 048.</p>
+    </div>
+  </div>
+</div>
 </body>
 </html>
